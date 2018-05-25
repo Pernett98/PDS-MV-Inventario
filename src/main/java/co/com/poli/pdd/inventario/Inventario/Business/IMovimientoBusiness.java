@@ -15,4 +15,5 @@ public interface IMovimientoBusiness {
     public Movimiento crearMovimiento(Movimiento movimiento);
     public Movimiento modificarMovimiento(Movimiento movimiento);
     public boolean eliminarMovimiento(String idMovimiento);
+    public Double getInventario();
 }

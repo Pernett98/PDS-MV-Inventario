@@ -105,7 +105,22 @@ public class MovimientoBusiness implements IMovimientoBusiness {
     }
 
     public Double getInventario() {
-        List<Movimiento> listMovimiento = movimientoDAO.listarMovimiento();
+        List<Producto> productos = productoDAO.listarProducto();
+        Double total = 0D;
+
+        for (Producto producto : productos) {
+            List<Movimiento> listMovimiento = movimientoDAO.listarMovimiento();
+            Double precios = 0D;
+            int cantidadMovimientos = 0;
+            for (Movimiento movimiento : listMovimiento) {
+                if (movimiento.getProducto().equals(producto)) {
+                    precios += movimiento.getPrecio();
+                    cantidadMovimientos++;
+                }
+            }
+            total += precios / cantidadMovimientos;
+        }
+        return total;
     }
 
     private boolean validarEntrada(Movimiento movimiento) {

@@ -10,7 +10,9 @@ import co.com.poli.pdd.inventario.Inventario.Data.MovimientoData;
 import co.com.poli.pdd.inventario.Inventario.Model.Movimiento;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class MovimientoDAO implements IMovimientoDAO {
 
     @Override

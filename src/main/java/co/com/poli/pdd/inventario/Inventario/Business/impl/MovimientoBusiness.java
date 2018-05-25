@@ -114,11 +114,13 @@ public class MovimientoBusiness implements IMovimientoBusiness {
             int cantidadMovimientos = 0;
             for (Movimiento movimiento : listMovimiento) {
                 if (movimiento.getProducto().equals(producto)) {
-                    precios += movimiento.getPrecio();
-                    cantidadMovimientos++;
+                    precios = precios + movimiento.getPrecio();
+                    cantidadMovimientos = cantidadMovimientos + 1;
                 }
             }
-            total += precios / cantidadMovimientos;
+            if (precios > 0 && cantidadMovimientos > 0) {
+                total = total + (precios / cantidadMovimientos);
+            }
         }
         return total;
     }
